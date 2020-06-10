@@ -1,6 +1,6 @@
 # isla-snapshots
 
-Compiled Sail ISA snapshots for the Isla symbolic execution tool
+Compiled Sail ISA snapshots for the [Isla](https://github.com/rems-project/isla) symbolic execution tool
 
 # Licensing
 
