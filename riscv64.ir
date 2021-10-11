@@ -65247,41 +65247,61 @@ val zisla_reset_registers = "reset_registers" : (%unit) ->  %unit
 val zisla_footprint_no_init : (%bv) ->  %bool
 
 fn zisla_footprint_no_init(zopcode) {
-  zz40 : %bool `50 99:2-113:3;
-  zz413 : %unit `50 100:4-100:26;
-  zz413 = zisla_reset_registers(()) `50 100:4-100:26;
-  zz412 : %unit `50 102:4-102:23;
-  zz412 = zcheck_cycle_count(()) `50 102:4-102:23;
-  zz41 : %union zast `50 103:4-110:8;
-  zz45 : %bool `50 103:19-107:5;
-  zz48 : %i64 `50 103:22-103:42;
-  zz411 : %i `50 103:22-103:36;
-  zz411 = zbitvector_length(zopcode) `50 103:22-103:36;
-  zz48 = zz5izDzKz5i64(zz411) `50 103:22-103:36;
-  zz49 : %i `50 103:22-103:42;
-  zz49 = zz5i64zDzKz5i(16) `50 103:22-103:42;
-  zz410 : %i `50 103:22-103:42;
-  zz410 = zz5i64zDzKz5i(zz48) `50 103:22-103:42;
-  zz45 = zeq_int(zz410, zz49) `50 103:22-103:42;
-  jump zz45 goto 21 `50 103:19-107:5;
-  zz47 : %bv32 `50 106:6-106:20;
+  zz40 : %bool `50 99:2-116:3;
+  zz422 : %unit `50 100:4-100:26;
+  zz422 = zisla_reset_registers(()) `50 100:4-100:26;
+  zz421 : %unit `50 102:4-102:23;
+  zz421 = zcheck_cycle_count(()) `50 102:4-102:23;
+  zz41 : %union zast `50 103:4-113:8;
+  zz46 : %bool `50 103:19-109:5;
+  zz417 : %i64 `50 103:22-103:42;
+  zz420 : %i `50 103:22-103:36;
+  zz420 = zbitvector_length(zopcode) `50 103:22-103:36;
+  zz417 = zz5izDzKz5i64(zz420) `50 103:22-103:36;
+  zz418 : %i `50 103:22-103:42;
+  zz418 = zz5i64zDzKz5i(16) `50 103:22-103:42;
+  zz419 : %i `50 103:22-103:42;
+  zz419 = zz5i64zDzKz5i(zz417) `50 103:22-103:42;
+  zz46 = zeq_int(zz419, zz418) `50 103:22-103:42;
+  jump zz46 goto 30 `50 103:19-109:5;
+  zz413 : %i `50 107:15-107:21;
+  zz413 = zz5i64zDzKz5i(4) `50 107:15-107:21;
+  zz415 : %bv `50 107:15-107:21;
+  zz415 = zPC;
+  zz416 : %bv `50 107:15-107:21;
+  zz416 = zadd_bits_int(zz415, zz413) `50 107:15-107:21;
+  znextPC = zz416;
+  zz414 : %unit `50 107:6-107:21;
+  zz414 = ();
+  zz412 : %bv32 `50 108:6-108:20;
+  zz412 = zopcode;
+  zz41 = zdecode(zz412) `50 108:6-108:20;
+  goto 42;
+  zz48 : %i `50 104:15-104:21;
+  zz48 = zz5i64zDzKz5i(2) `50 104:15-104:21;
+  zz410 : %bv `50 104:15-104:21;
+  zz410 = zPC;
+  zz411 : %bv `50 104:15-104:21;
+  zz411 = zadd_bits_int(zz410, zz48) `50 104:15-104:21;
+  znextPC = zz411;
+  zz49 : %unit `50 104:6-104:21;
+  zz49 = ();
+  zz47 : %bv16 `50 105:6-105:30;
   zz47 = zopcode;
-  zz41 = zdecode(zz47) `50 106:6-106:20;
-  goto 24;
-  zz46 : %bv16 `50 104:6-104:30;
-  zz46 = zopcode;
-  zz41 = zdecodeCompressed(zz46) `50 104:6-104:30;
-  zz42 : %enum zRetired `50 108:4-110:8;
-  zz44 : %union zast `50 108:12-108:46;
-  zz44 = zext_post_decode_hook(zz41) `50 108:20-108:45;
-  zz42 = zexecute(zz44) `50 108:12-108:46;
-  jump have_exception goto 30 `50 108:12-108:46;
-  goto 31;
-  goto 34;
-  zz43 : %bool `50 108:4-110:8;
+  zz41 = zdecodeCompressed(zz47) `50 105:6-105:30;
+  zz42 : %enum zRetired `50 110:4-113:8;
+  zz45 : %union zast `50 110:12-110:46;
+  zz45 = zext_post_decode_hook(zz41) `50 110:20-110:45;
+  zz42 = zexecute(zz45) `50 110:12-110:46;
+  jump have_exception goto 48 `50 110:12-110:46;
+  goto 49;
+  goto 54;
+  zz43 : %bool `50 110:4-113:8;
+  zz44 : %unit `50 111:4-111:13;
+  zz44 = ztick_pc(()) `50 111:4-111:13;
   zz43 = true;
   zz40 = zz43;
-  jump @not(have_exception) goto 37 `50 99:2-113:3;
+  jump @not(have_exception) goto 57 `50 99:2-116:3;
   have_exception = false;
   zz40 = false;
   return = zz40;
@@ -65291,18 +65311,18 @@ fn zisla_footprint_no_init(zopcode) {
 val zisla_footprint : (%bv) ->  %bool
 
 fn zisla_footprint(zopcode) {
-  zz43 : %unit `50 119:2-119:13;
-  zz43 = zext_init(()) `50 119:2-119:13;
-  zz42 : %unit `50 121:2-121:17;
-  zz42 = z_set_Mstatus_MPRV(&zmstatus, 0b0) `50 121:2-121:17;
-  zz40 : %bool `50 123:2-129:3;
-  zz41 : %unit `50 124:4-124:16;
-  zz41 = zinit_model(()) `50 124:4-124:16;
-  zz40 = zisla_footprint_no_init(zopcode) `50 126:4-126:34;
-  jump have_exception goto 10 `50 126:4-126:34;
+  zz43 : %unit `50 122:2-122:13;
+  zz43 = zext_init(()) `50 122:2-122:13;
+  zz42 : %unit `50 124:2-124:17;
+  zz42 = z_set_Mstatus_MPRV(&zmstatus, 0b0) `50 124:2-124:17;
+  zz40 : %bool `50 126:2-132:3;
+  zz41 : %unit `50 127:4-127:16;
+  zz41 = zinit_model(()) `50 127:4-127:16;
+  zz40 = zisla_footprint_no_init(zopcode) `50 129:4-129:34;
+  jump have_exception goto 10 `50 129:4-129:34;
   goto 11;
   goto 11;
-  jump @not(have_exception) goto 14 `50 123:2-129:3;
+  jump @not(have_exception) goto 14 `50 126:2-132:3;
   have_exception = false;
   zz40 = false;
   return = zz40;
@@ -65311,7 +65331,7 @@ fn zisla_footprint(zopcode) {
 
 val zinitializze_registers : (%unit) ->  %unit
 
-fn zinitializze_registers(zgsz37943) {
+fn zinitializze_registers(zgsz37948) {
   zz4368 : %i ``;
   zz4368 = zz5i64zDzKz5i(64) ``;
   zz4370 : %bv ``;
