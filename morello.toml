@@ -9,7 +9,8 @@ write_exclusives = ["Write_exclusive", "Write_exclusive_release"]
 
 # The assembler is used for assembling the code in litmus tests. We
 # assume it takes arguments like GNU as.
-assembler = "aarch64-linux-gnu-as"
+#assembler = "aarch64-linux-gnu-as"
+assembler = "aarch64-unknown-freebsd-clang -x assembler -march=morello - -c -o -"
 objdump = "aarch64-linux-gnu-objdump"
 linker = "aarch64-linux-gnu-ld"
 
