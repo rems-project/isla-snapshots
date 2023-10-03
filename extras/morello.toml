@@ -13,6 +13,7 @@ write_exclusives = ["Write_exclusive", "Write_exclusive_release"]
 assembler = "aarch64-unknown-freebsd-clang -x assembler -march=morello - -c -o -"
 objdump = "aarch64-linux-gnu-objdump"
 linker = "aarch64-linux-gnu-ld"
+nm = "aarch64-linux-gnu-nm"
 
 [mmu]
 page_table_base = "0x300000"
